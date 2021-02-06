@@ -7,7 +7,7 @@ from matplotlib import rcParams
 
 unirest.timeout(15) # 5s timeout
 
-RAPIDAPI_KEY  = "d3c8a61ac6msh599765c625f3b24p1e4bf2jsnc7e441ef8701"
+RAPIDAPI_KEY  = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 RAPIDAPI_HOST = "apidojo-yahoo-finance-v1.p.rapidapi.com"
 
 symbol_string = ""
