@@ -1,11 +1,9 @@
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
-import React from 'react';
 
 import HomePage from '../screens/HomePage';
 import BrowseScreen from '../screens/BrowseScreen';
 import StockScreen from '../screens/StockScreen';
-import Header from '../shared/header';
 
 const screens = {
     HomePage: {
