@@ -12,9 +12,9 @@ export default function HomePage({ navigation }) {
         { symbol: 'FB', name: 'Facebook', value: 266.04, analysis: 'sell', status: 'down' },
     ]);
     const [watchStocks, setWatchStocks] = useState([
-        { symbol: 'GME', name: 'Gamestop', value: 66.50, analysis: 'not invest in', status: 'down' },
-        { symbol: 'NVDA', name: 'Nvidia', value: 544.00, analysis: 'invest in', status: 'up' },
-        { symbol: 'SQ', name: 'Square', value: 259.00, analysis: 'invest in', status: 'up' },
+        { symbol: 'GME', name: 'Gamestop', value: 66.52, analysis: 'not invest in', status: 'down' },
+        { symbol: 'NVDA', name: 'Nvidia', value: 544.01, analysis: 'invest in', status: 'up' },
+        { symbol: 'SQ', name: 'Square', value: 259.05, analysis: 'invest in', status: 'up' },
         { symbol: 'AMC', name: 'AMC Entertainment', value: 6.07, analysis: 'not invest in', status: 'down' },
     ]);
 
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
         color: '#B2B2B2'
       },
       divider: {
-        borderColor: 'rgba(0, 0, 0, .3)', 
+        borderColor: 'rgba(255, 255, 255, .1)', 
         borderWidth: 1
       }
 });

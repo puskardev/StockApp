@@ -1,15 +1,19 @@
+import React from 'react';
 import { createStackNavigator } from "react-navigation-stack";
-import { createAppContainer } from "react-navigation";
 
 import HomePage from '../screens/HomePage';
 import BrowseScreen from '../screens/BrowseScreen';
 import StockScreen from '../screens/StockScreen';
+import Header from '../shared/header';
 
 const screens = {
     HomePage: {
         screen: HomePage,
-        navigationOptions: {
-            title: 'Home'
+        navigationOptions: ({ navigation }) => {
+            return {
+                headerTitle: () => <Header navigation={ navigation } />
+                //title: 'Home'
+            }
         }
     },
     BrowseScreen: {
@@ -39,4 +43,4 @@ const AppScreens = createStackNavigator(screens, {
     }
 });
 
-export default createAppContainer(AppScreens);
+export default AppScreens;

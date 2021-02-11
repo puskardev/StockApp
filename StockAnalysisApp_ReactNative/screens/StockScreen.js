@@ -10,7 +10,6 @@ export default function StockScreen({ navigation }) {
                     <Text style={styles.NameText}>{ navigation.getParam('name') }</Text>
                     <Text style={styles.MarketValueText}>${ navigation.getParam('value') }</Text>
                 </View>
-                <Text style={styles.ValueChangeText}>Up $[] ([]%)</Text>
                 <Image
                     resizeMode= 'contain'
                     style={styles.image}
@@ -68,13 +67,9 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold'
     },
-    ValueChangeText: {
-        color: 'white',
-        marginLeft: 20
-    },
     image: {
         width: '100%',
-        marginTop: 15,
+        marginTop: 10,
         backgroundColor: '#2f3b52'
     },
     AnalysisHeader: {
