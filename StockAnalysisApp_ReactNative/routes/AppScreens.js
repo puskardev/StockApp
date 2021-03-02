@@ -4,7 +4,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import HomePage from '../screens/HomePage';
 import BrowseScreen from '../screens/BrowseScreen';
 import StockScreen from '../screens/StockScreen';
-import Header from '../shared/header';
+import Header from '../components/header';
 
 const screens = {
     HomePage: {
@@ -12,7 +12,6 @@ const screens = {
         navigationOptions: ({ navigation }) => {
             return {
                 headerTitle: () => <Header navigation={ navigation } />
-                //title: 'Home'
             }
         }
     },

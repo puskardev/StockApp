@@ -4,6 +4,8 @@ import { createAppContainer } from 'react-navigation';
 import AppScreens from './AppScreens';
 import HelpDrawer from './HelpDrawer';
 
+import CustomDrawerContentComponent from '../components/DrawerCustomization';
+
 const RootDrawerNavigator = createDrawerNavigator({
     Home: {
         screen: AppScreens,
@@ -11,7 +13,19 @@ const RootDrawerNavigator = createDrawerNavigator({
     Help: {
         screen: HelpDrawer,
     }}, {
-        drawerBackgroundColor: '#2f3b52'
+        initialRouteName: 'Home',
+        contentComponent: CustomDrawerContentComponent,
+        drawerBackgroundColor: '#2f3b52',
+        contentOptions: {
+            activeTintColor: '#232c40',
+            inactiveTintColor: 'white',
+            activeBackgroundColor: '#e6e6e6',
+            labelStyle: { fontSize: 17 },
+            itemsContainerStyle: {
+                marginTop: 10
+            }
+        }
+        
     });
 
 export default createAppContainer(RootDrawerNavigator);

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Text, Image, ScrollView, ImageBackground } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 
 export default function StockScreen({ navigation }) {
+    const [selectedValue, setSelectedValue] = useState('Monday')
+
     return (
         <ImageBackground source={require('../assets/AppBackground.png')} style={styles.container}>
             <ScrollView>
@@ -15,6 +18,12 @@ export default function StockScreen({ navigation }) {
                     style={styles.image}
                     source={ navigation.getParam('status')==='up' ? require("../assets/GreenTrendline.png") : require("../assets/RedTrendline.png")}
                 /> 
+
+                <View style={styles.HighLowValueContainer}>
+                    <Text style={styles.HighLowValueText}>High value: ${ navigation.getParam('highValue') }</Text>
+                    <Text style={styles.HighLowValueText}>Low value: ${ navigation.getParam('lowValue') }</Text>
+                </View>
+
                 <Text style={styles.AnalysisHeader}>Based on our Analysis:</Text>
                 <Text style={styles.AnalysisText}>We suggest to { navigation.getParam('analysis') } this stock.</Text>
 
@@ -71,6 +80,28 @@ const styles = StyleSheet.create({
         width: '100%',
         marginTop: 10,
         backgroundColor: '#2f3b52'
+    },
+    DateText: {
+        backgroundColor: '#2f3b52', 
+        color: 'white', 
+        marginLeft: 10, 
+        padding: 10,
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: '#2f3b52', 
+        overflow: 'hidden',
+        textAlign: 'center',
+    },
+    HighLowValueContainer: {
+        flexDirection: 'row',
+        marginTop: 20,
+        marginLeft: 20,
+        marginRight: 25,
+        justifyContent: 'space-between'
+    },  
+    HighLowValueText: {
+        color: 'white',
+        fontWeight: 'bold'
     },
     AnalysisHeader: {
         color: 'white',

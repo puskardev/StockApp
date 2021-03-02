@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from "react-navigation-stack";
 
 import HelpScreen from '../screens/HelpScreen';
-import Header from '../shared/header';
+import Header from '../components/header';
 
 const screens = {
     HelpScreen: {
