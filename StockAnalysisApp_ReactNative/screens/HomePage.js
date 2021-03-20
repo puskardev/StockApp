@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, FlatList, ImageBackground } from 'react-native';
 
+import Header from '../components/header';
+
 export default function HomePage({ navigation }) {
 
     // temporary placeholder stocks:

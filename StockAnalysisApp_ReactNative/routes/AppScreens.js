@@ -1,17 +1,25 @@
 import React from 'react';
 import { createStackNavigator } from "react-navigation-stack";
 
+import LoginScreen from '../screens/LoginScreen';
 import HomePage from '../screens/HomePage';
 import BrowseScreen from '../screens/BrowseScreen';
 import StockScreen from '../screens/StockScreen';
 import Header from '../components/header';
 
 const screens = {
+    LoginScreen: {
+        screen: LoginScreen,
+        navigationOptions: {
+            title: ''
+        }
+    },
     HomePage: {
         screen: HomePage,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <Header navigation={ navigation } />
+                headerTitle: () => <Header navigation={ navigation } />,
+                headerLeft: null
             }
         }
     },

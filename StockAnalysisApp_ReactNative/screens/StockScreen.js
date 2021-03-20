@@ -24,6 +24,7 @@ export default function StockScreen({ navigation }) {
                     <Text style={styles.HighLowValueText}>Low value: ${ navigation.getParam('lowValue') }</Text>
                 </View>
 
+                {/* Analysis: */}
                 <Text style={styles.AnalysisHeader}>Based on our Analysis:</Text>
                 <Text style={styles.AnalysisText}>We suggest to { navigation.getParam('analysis') } this stock.</Text>
 
