@@ -26,7 +26,7 @@ export default function StockScreen({ navigation }) {
 
                 {/* Analysis: */}
                 <Text style={styles.AnalysisHeader}>Based on our Analysis:</Text>
-                <Text style={styles.AnalysisText}>We suggest to { navigation.getParam('analysis') } this stock.</Text>
+                <Text style={styles.AnalysisText}>We predict that this stock will go { navigation.getParam('status') } in the future.</Text>
 
                 {/* temporary placeholder for analysis description */}
                 <Text style={{ color: 'white', marginLeft: 10, paddingLeft: 10 }}>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</Text>

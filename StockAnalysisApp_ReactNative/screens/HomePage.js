@@ -7,17 +7,17 @@ export default function HomePage({ navigation }) {
 
     // temporary placeholder stocks:
     const [stocks, setStocks] = useState([
-        { symbol: 'TSLA', name: 'Tesla', value: 802.31, highValue: 807.25, lowValue: 785.33, analysis: 'keep', status: 'up' },
-        { symbol: 'AAPL', name: 'Apple', value: 134.48, highValue: 134.85, lowValue: 133.69, analysis: 'sell', status: 'down' },
-        { symbol: 'MSFT', name: 'Microsoft', value: 244.42, highValue: 244.89, lowValue: 242.74, analysis: 'keep', status: 'up' },
-        { symbol: 'AMZN', name: 'Amazon', value: 3257.71, highValue: 3261.01, lowValue: 3233.31, analysis: 'keep', status: 'up' },
-        { symbol: 'FB', name: 'Facebook', value: 269.02, highValue: 271.18, lowValue: 268.34, analysis: 'sell', status: 'down' },
+        { symbol: 'TSLA', name: 'Tesla', value: 802.31, highValue: 807.25, lowValue: 785.33, status: 'up' },
+        { symbol: 'AAPL', name: 'Apple', value: 134.48, highValue: 134.85, lowValue: 133.69, status: 'down' },
+        { symbol: 'MSFT', name: 'Microsoft', value: 244.42, highValue: 244.89, lowValue: 242.74, status: 'up' },
+        { symbol: 'AMZN', name: 'Amazon', value: 3257.71, highValue: 3261.01, lowValue: 3233.31, status: 'up' },
+        { symbol: 'FB', name: 'Facebook', value: 269.02, highValue: 271.18, lowValue: 268.34, status: 'down' },
     ]);
     const [watchStocks, setWatchStocks] = useState([
-        { symbol: 'GME', name: 'Gamestop', value: 50.82, highValue: 55.24, lowValue: 48.06, analysis: 'not invest in', status: 'down' },
-        { symbol: 'NVDA', name: 'Nvidia', value: 594.18, highValue: 611.61, lowValue: 591.01, analysis: 'invest in', status: 'up' },
-        { symbol: 'SQ', name: 'Square', value: 272.49, highValue: 273.84, lowValue: 262.53, analysis: 'invest in', status: 'up' },
-        { symbol: 'AMC', name: 'AMC Entertainment', value: 5.59, highValue: 5.97, lowValue: 5.55, analysis: 'not invest in', status: 'down' },
+        { symbol: 'GME', name: 'Gamestop', value: 50.82, highValue: 55.24, lowValue: 48.06, status: 'down' },
+        { symbol: 'NVDA', name: 'Nvidia', value: 594.18, highValue: 611.61, lowValue: 591.01, status: 'up' },
+        { symbol: 'SQ', name: 'Square', value: 272.49, highValue: 273.84, lowValue: 262.53, status: 'up' },
+        { symbol: 'AMC', name: 'AMC Entertainment', value: 5.59, highValue: 5.97, lowValue: 5.55, status: 'down' },
     ]);
 
 
