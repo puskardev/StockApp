@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, FlatList, ImageBackground } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
 import Header from '../components/header';
 
@@ -28,7 +30,6 @@ export default function HomePage({ navigation }) {
     return (
         <ImageBackground source={require('../assets/AppBackground.png')} style={styles.container}>
             <ScrollView>
-                <Text style={{ color: 'white', fontSize: 15 }}>Welcome Back, [name]</Text>
                 <View style={styles.ListContainer}>
                     <Text style={styles.ListHeader}>My Stocks</Text>
                     <FlatList 
@@ -64,7 +65,7 @@ export default function HomePage({ navigation }) {
                                 <TouchableOpacity onPress={() => navigation.navigate('StockScreen', item)}>
                                     <View style={styles.StockContainer}>
                                         <Text style={styles.StockText}>{ item.symbol }</Text>
-                                        <Image
+                                        <Image style={{flex: 2}}
                                             resizeMode= 'contain'
                                             style={styles.image}
                                             source={ item.status==='up' ? require("../assets/GreenTrendline.png") : require("../assets/RedTrendline.png") }
@@ -80,6 +81,12 @@ export default function HomePage({ navigation }) {
                         <Text style={styles.AddStockText}>+ Add Stock To List</Text>
                     </TouchableOpacity>
                 </View>
+
+                <TouchableOpacity style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginTop: 20, marginLeft: 5 }}>
+                        <FontAwesomeIcon icon={ faPlusSquare } color={ '#DEDEDE' } size={ 30 } />
+                        <Text style={{ color: '#DEDEDE', fontWeight: 'bold', fontSize: 25, marginLeft: 10 }}>Add New List</Text>
+                </TouchableOpacity>
+
             </ScrollView>
         </ImageBackground>
     );

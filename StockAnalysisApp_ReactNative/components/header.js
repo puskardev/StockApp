@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faCommentsDollar } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header({ navigation }) {
 
@@ -11,7 +13,7 @@ export default function Header({ navigation }) {
     return (
         <View style={styles.header}>
             <MaterialIcons name='menu' size={35} onPress={openMenu} style={styles.icon} />
-            <Text style={styles.headerText}>Stock Analysis</Text>
+            <FontAwesomeIcon icon={ faCommentsDollar } color={'white'} size={40} style={styles.headerText} />
         </View>
     );
 }
@@ -27,10 +29,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 0,
     },
     headerText: {
-        fontWeight: 'bold',
-        fontSize: 20,
-        color: 'white',
-        letterSpacing: 1,
         position: 'absolute'
     },
     icon: {
