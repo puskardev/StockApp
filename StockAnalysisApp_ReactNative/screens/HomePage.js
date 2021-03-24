@@ -82,10 +82,12 @@ export default function HomePage({ navigation }) {
                     </TouchableOpacity>
                 </View>
 
+                {/*
                 <TouchableOpacity style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginTop: 20, marginLeft: 5 }}>
                         <FontAwesomeIcon icon={ faPlusSquare } color={ '#DEDEDE' } size={ 30 } />
                         <Text style={{ color: '#DEDEDE', fontWeight: 'bold', fontSize: 25, marginLeft: 10 }}>Add New List</Text>
                 </TouchableOpacity>
+                */ }
 
             </ScrollView>
         </ImageBackground>

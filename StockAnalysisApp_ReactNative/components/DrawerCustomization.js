@@ -6,8 +6,9 @@ import { Avatar } from "react-native-elements";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
-class CustomDrawerContentComponent extends Component {
-    render() {
+//class CustomDrawerContentComponent extends Component {
+const CustomDrawerContentComponent = props => {
+    //render() {
         return (
             <View style={{ flex: 1 }}>
 
@@ -23,8 +24,9 @@ class CustomDrawerContentComponent extends Component {
                                     <Text style={{ color: '#f9f9f9' }}>[email]</Text>
                             </View>
                         </View>
-                        <DrawerItems {...this.props} />
-                        <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'flex-end', marginLeft: 15, marginTop: 5 }}>
+                        {/* <DrawerItems {...this.props} /> */}
+                        <DrawerItems {...props} />
+                        <TouchableOpacity onPress={() => props.navigation.navigate('LoginScreen') } style={{ flexDirection: 'row', alignItems: 'flex-end', marginLeft: 15, marginTop: 5 }}>
                             <FontAwesomeIcon icon={ faSignOutAlt } color={'white'} size={20} />
                             <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold', marginLeft: 10 }}>Logout</Text>
                         </TouchableOpacity>
@@ -33,7 +35,7 @@ class CustomDrawerContentComponent extends Component {
 
             </View>
         );
-    }
+    //}
 }   
 
 const styles = StyleSheet.create({

@@ -19,7 +19,7 @@ const screens = {
         navigationOptions: ({ navigation }) => {
             return {
                 headerTitle: () => <Header navigation={ navigation } />,
-                headerLeft: null
+                headerLeft: () => null
             }
         }
     },
