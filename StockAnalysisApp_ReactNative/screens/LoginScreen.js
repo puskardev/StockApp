@@ -42,7 +42,7 @@ export default function LoginScreen({ navigation }) {
             </View>
             <View style={{ alignItems: "center", marginTop: 25 }}>
                 <Text style={styles.Signup}>Don't have an Account?</Text>
-                <TouchableOpacity style={{ marginTop: 1 }}>
+                <TouchableOpacity style={{ marginTop: 1 }} onPress={ () => navigation.navigate("SignupScreen") } >
                     <Text style={{ color: "grey" }}>Sign Up</Text>
                 </TouchableOpacity>
             </View>

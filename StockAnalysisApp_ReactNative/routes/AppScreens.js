@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from "react-navigation-stack";
 
 import LoginScreen from '../screens/LoginScreen';
+import SignupScreen from '../screens/SignupScreen';
 import HomePage from '../screens/HomePage';
 import BrowseScreen from '../screens/BrowseScreen';
 import StockScreen from '../screens/StockScreen';
@@ -11,7 +12,15 @@ const screens = {
     LoginScreen: {
         screen: LoginScreen,
         navigationOptions: {
-            title: ''
+            title: '',
+            headerLeft: () => null
+        }
+    },
+    SignupScreen: {
+        screen: SignupScreen,
+        navigationOptions: {
+            title: '',
+            headerLeft: () => null
         }
     },
     HomePage: {
