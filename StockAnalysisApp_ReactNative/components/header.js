@@ -13,7 +13,7 @@ export default function Header({ navigation }) {
     return (
         <View style={styles.header}>
             <MaterialIcons name='menu' size={35} onPress={openMenu} style={ styles.icon } />
-            {/* <FontAwesomeIcon icon={ faMoon } color={'white'} size={40} style={ styles.headerText } /> */}
+            <FontAwesomeIcon icon={ faMoon } color={'white'} size={40} style={ styles.headerText } />
         </View>
     );
 }

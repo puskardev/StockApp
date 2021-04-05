@@ -2,6 +2,7 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
 
 import AppScreens from './AppScreens';
+import BrowseScreen from '../screens/BrowseScreen';
 import HelpDrawer from './HelpDrawer';
 
 import CustomDrawerContentComponent from '../components/DrawerCustomization';

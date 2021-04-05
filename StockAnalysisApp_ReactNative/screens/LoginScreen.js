@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, ScrollView, Alert } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChartLine } from '@fortawesome/free-solid-svg-icons';
 import fire from "../src/firebase/config";
-import { FontAwesome } from "@expo/vector-icons";
 
 export default function LoginScreen({ navigation }) {
 
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
+
+    const [SigninFailed, setSigninFailed] = useState(false);
 
     const pressHandlerHomePage = () => {
         {
@@ -23,50 +24,48 @@ export default function LoginScreen({ navigation }) {
                 if (error.code === "auth/operation-not-allowed") {
                   console.log("Enable anonymous in your firebase console.");
                 }
-      
-                console.error(error);
+                setSigninFailed(true);
+                //console.error(error);
               });
         }
     };
 
     return (
-        <ImageBackground source={require('../assets/AppBackground.png')} style={styles.container}>
-            <FontAwesomeIcon icon={ faChartLine } color={'white'} size={80} />
-            <Text style={styles.Login}>Log In</Text>
-            <TextInput placeholder="Email" style={styles.text} onChangeText={(Email) => setEmail(Email)} />
-            <TextInput secureTextEntry={true} placeholder="Password" style={styles.text} onChangeText={(Password) => setPassword(Password)} />
-            <View style={styles.border}>
-                <TouchableOpacity style={styles.SignupTouch} onPress={pressHandlerHomePage}>
-                    <Text style={{ color: "black" }}>Sign In</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={{ alignItems: "center", marginTop: 25 }}>
-                <Text style={styles.Signup}>Don't have an Account?</Text>
-                <TouchableOpacity style={{ marginTop: 1 }} onPress={ () => navigation.navigate("SignupScreen") } >
-                    <Text style={{ color: "grey" }}>Sign Up</Text>
-                </TouchableOpacity>
-            </View>
+        <ImageBackground source={require('../assets/AppBackground.png')} style={styles.backgroundContainer}>
+            <ScrollView>
+                <View style={styles.container}>
+                    <FontAwesomeIcon icon={ faChartLine } color={'white'} size={80} />
+                    <Text style={styles.Login}>Log In</Text>
+                    <TextInput placeholder="Email" style={styles.text} onChangeText={(Email) => setEmail(Email)} />
+                    <TextInput secureTextEntry={true} placeholder="Password" style={styles.text} onChangeText={(Password) => setPassword(Password)} />
+                    <Text style={SigninFailed ? { color: '#c81b1b' } : { opacity: 0 }}>Your username or password is invalid.</Text>
+                    <View style={styles.border}>
+                        <TouchableOpacity style={styles.SignupTouch} onPress={pressHandlerHomePage}>
+                            <Text style={{ color: "black" }}>Sign In</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ alignItems: "center", marginTop: 40 }}>
+                        <Text style={styles.Signup}>Don't have an Account?</Text>
+                        <TouchableOpacity style={{ marginTop: 1 }} onPress={ () => navigation.navigate("SignupScreen") } >
+                            <Text style={{ color: "grey", fontSize: 16 }}>Sign Up</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </ScrollView>
         </ImageBackground>
     );
   }
 
   const styles = StyleSheet.create({
-    container: {
+    backgroundContainer: {
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#2B3B5C",
-        marginBottom: 30
+        backgroundColor: "#2B3B5C"
     },
-    text: {
-        paddingTop: 8,
-        paddingBottom: 8,
-        paddingLeft: 15,
-        height: "5%",
-        width: "75%",
-        margin: 12,
-        backgroundColor: "#FBFBFF",
-        borderRadius: 5
+    container: {
+        flex: 1, 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        marginTop: 120
     },
     Login: {
         fontWeight: "bold",
@@ -75,12 +74,19 @@ export default function LoginScreen({ navigation }) {
         marginBottom: 10,
         marginTop: 10
     },
-    button: {
-        padding: 10,
-        alignContent: "center",
+    text: {
+        paddingTop: 8,
+        paddingBottom: 8,
+        paddingLeft: 15,
+        height: "10%",
+        width: "70%",
+        margin: 12,
+        backgroundColor: "#FBFBFF",
+        borderRadius: 5
     },
     SignupTouch: {
-        width: "100%",
+        alignSelf: 'center',
+        width: "70%",
         padding: 10,
         paddingLeft: "20%",
         paddingRight: "20%",
@@ -93,7 +99,7 @@ export default function LoginScreen({ navigation }) {
         width: "50%",
     },
     Signup: {
-        fontSize: 15,
+        fontSize: 16,
         alignItems: "center",
         color: 'white'
     },
