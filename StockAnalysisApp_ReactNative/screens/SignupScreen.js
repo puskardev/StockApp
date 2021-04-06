@@ -74,9 +74,9 @@ export default function SignupScreen({ navigation }) {
               <Text style={{ marginBottom: 15, color: 'white', fontSize: 18 }}>
                 All investments involve risks, including the loss of principal. 
                 The past performance of a security, cryptocurrency, or financial product does not guarantee future results or returns. 
-                Customers should consider their investment objectives and risks carefully before investing in securities or buying/selling cryptocurrencies.
-                The price of a given security may increase or decrease based on market conditions and customers may lose money, including their original investment. 
-                Moon is meant for informational purposes only and is not intended to serve as a recommendation to a customer to buy, hold or sell any security or any other asset.
+                Users should consider their investment objectives and risks carefully before investing in securities or buying/selling cryptocurrencies.
+                The price of a given security may increase or decrease based on market conditions and users may lose money, including their original investment. 
+                Moon is meant for informational purposes only and is not intended to serve as a recommendation to a user to buy, hold or sell any security or any other asset.
               </Text>
               <Pressable style={{ backgroundColor: 'white', borderRadius: 20, padding: 10, elevation: 2 }} onPress={() => setTermsModalVisible(!termsModalVisisble)}>
                 <Text style={{ color: '#232d41', fontWeight: 'bold' }}>Close</Text>

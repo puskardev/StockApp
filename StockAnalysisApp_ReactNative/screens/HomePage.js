@@ -15,11 +15,11 @@ export default function HomePage({ navigation }) {
         { symbol: 'AMZN', name: 'Amazon', value: 3257.71, highValue: 3261.01, lowValue: 3233.31, status: 'up' },
         { symbol: 'FB', name: 'Facebook', value: 269.02, highValue: 271.18, lowValue: 268.34, status: 'down' },
     ]);
-    const [watchStocks, setWatchStocks] = useState([
-        { symbol: 'GME', name: 'Gamestop', value: 50.82, highValue: 55.24, lowValue: 48.06, status: 'down' },
-        { symbol: 'NVDA', name: 'Nvidia', value: 594.18, highValue: 611.61, lowValue: 591.01, status: 'up' },
-        { symbol: 'SQ', name: 'Square', value: 272.49, highValue: 273.84, lowValue: 262.53, status: 'up' },
-        { symbol: 'AMC', name: 'AMC Entertainment', value: 5.59, highValue: 5.97, lowValue: 5.55, status: 'down' },
+    const [trendingStocks, setTrendingStocks] = useState([
+        { symbol: 'AMC', name: 'AMC Entertainment', value: 10.51, highValue: 11.25, lowValue: 9.72, status: 'up' },
+        { symbol: 'RBLX', name: 'Roblox', value: 71.15, highValue: 72.86, lowValue: 68.56, status: 'up' },
+        { symbol: 'CCL', name: 'Carnival', value: 28.04, highValue: 28.73, lowValue: 27.70, status: 'up' },
+        { symbol: 'TSLA', name: 'Tesla', value: 692.52, highValue: 708.16, lowValue: 684.70, status: 'up' },
     ]);
 
 
@@ -57,9 +57,9 @@ export default function HomePage({ navigation }) {
                 </View>
 
                 <View style={styles.ListContainer}>
-                    <Text style={styles.ListHeader}>Watch List</Text>
+                    <Text style={styles.ListHeader}>Trending Stocks</Text>
                     <FlatList 
-                        data={watchStocks}
+                        data={trendingStocks}
                         renderItem={({ item }) => (
                             <View>
                                 <TouchableOpacity onPress={() => navigation.navigate('StockScreen', item)}>

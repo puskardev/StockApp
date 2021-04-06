@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { DrawerItems } from 'react-navigation-drawer';
 import { Avatar } from "react-native-elements";
@@ -28,6 +28,7 @@ const CustomDrawerContentComponent = props => {
                         style={styles.container}
                         //forceInset={{ top: 'always', horizontal: 'never' }}
                     >
+                        <Image style={{ width: '80%', height: '40%', marginLeft: 25, marginTop: 20 }} resizeMode='contain' source={ require("../assets/MoonLogo.png") } />
                         {/*
                         <View style={[ styles.containHeader, { backgroundColor: '#2f3b52' } ]}>
                             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -56,7 +57,7 @@ const CustomDrawerContentComponent = props => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: '10%'
+        marginTop: '12%'
     },
     containHeader: {
         marginTop: '20%'

@@ -16,13 +16,13 @@ const HelpScreen = props => {
                 <Modal animationType="slide" transparent={true} visible={termsModalVisisble} onRequestClose={() => {setTermsModalVisible(!termsModalVisisble); }}>
                     <View style={styles.ModalContainer}>
                         <View style={styles.ModalBackground}>
-                            <Text style={{ marginBottom: 15, color: 'white', fontWeight: 'bold', fontSize: 25, alignSelf: 'center' }}>Disclosures</Text>
+                            <Text style={{ marginBottom: 15, color: 'white', fontWeight: 'bold', fontSize: 25, alignSelf: 'center' }}>Risk Disclosures</Text>
                             <Text style={{ marginBottom: 15, color: 'white', fontSize: 18 }}>
                                 All investments involve risks, including the loss of principal. 
                                 The past performance of a security, cryptocurrency, or financial product does not guarantee future results or returns. 
-                                Customers should consider their investment objectives and risks carefully before investing in securities or buying/selling cryptocurrencies.
-                                The price of a given security may increase or decrease based on market conditions and customers may lose money, including their original investment. 
-                                Moon is meant for informational purposes only and is not intended to serve as a recommendation to a customer to buy, hold or sell any security or any other asset.
+                                Users should consider their investment objectives and risks carefully before investing in securities or buying/selling cryptocurrencies.
+                                The price of a given security may increase or decrease based on market conditions and users may lose money, including their original investment. 
+                                Moon is meant for informational purposes only and is not intended to serve as a recommendation to a user to buy, hold or sell any security or any other asset.
                             </Text>
                             <Pressable style={{ backgroundColor: 'white', borderRadius: 20, padding: 10, elevation: 2 }} onPress={() => setTermsModalVisible(!termsModalVisisble)}>
                                 <Text style={{ color: '#232d41', fontWeight: 'bold' }}>Close</Text>
@@ -47,10 +47,21 @@ const HelpScreen = props => {
                         Clicking this button will bring you to a Browse page, where you can browse for any stock you'd like.
                     </Text>
                     */}
+                    
+                    <Text style={styles.header}>What is "My Stocks" on the homepage?</Text>
+                    <Text style={styles.text}>
+                        Moon allows users to make their own list of stocks to keep track of within the app.
+                        Upon first creating an account and opening the app, the "My Stock" list will be empty.
+                        Click on the "+ Add Stock to List" button below the list and browse for any stock of your choice.
+                        When you find a stock you'd like to add to your list, click the plus (+) button on the right.
+                        When you get back to the homepage, your stock will be added to the list.
+                        Add as many stocks as you'd like to your list. 
+                        The next time you log back into the app, your list will be saved just as you left it!
+                    </Text>
 
-                    <Text style={styles.header}>What are Moon's disclosures?</Text>
+                    <Text style={styles.header}>What are Moon's risk disclosures?</Text>
                     <View style={{ flexDirection: 'row' }}>
-                        <Text style={styles.text}>Our disclosures can be viewed </Text>
+                        <Text style={styles.text}>Our risk disclosures can be viewed </Text>
                         <Text style={{ color: 'white', marginTop: 5, textDecorationLine: 'underline' }} onPress={() => setTermsModalVisible(!termsModalVisisble)}>here</Text>
                         <Text style={styles.text}>.</Text>
                     </View>
@@ -58,7 +69,7 @@ const HelpScreen = props => {
                     <Text style={styles.header}>Have any feedback for us?</Text>
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={styles.text}>Let us know what you think through </Text>
-                        <Text style={{ color: 'white', marginTop: 5, textDecorationLine: 'underline' }} onPress={() => this.loadFeedbackFormInBrowser}>this form</Text>
+                        <Text style={{ color: 'white', marginTop: 5, textDecorationLine: 'underline' }} onPress={loadFeedbackFormInBrowser}>this form</Text>
                         <Text style={styles.text}>!</Text>
                     </View>
                 </View>

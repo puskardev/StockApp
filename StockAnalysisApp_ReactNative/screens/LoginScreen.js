@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, ScrollView, Alert } from "react-native";
+import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, ScrollView, Image } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChartLine } from '@fortawesome/free-solid-svg-icons';
 import fire from "../src/firebase/config";
@@ -33,22 +33,26 @@ export default function LoginScreen({ navigation }) {
     return (
         <ImageBackground source={require('../assets/AppBackground.png')} style={styles.backgroundContainer}>
             <ScrollView>
-                <View style={styles.container}>
-                    <FontAwesomeIcon icon={ faChartLine } color={'white'} size={80} />
-                    <Text style={styles.Login}>Log In</Text>
-                    <TextInput placeholder="Email" style={styles.text} onChangeText={(Email) => setEmail(Email)} />
-                    <TextInput secureTextEntry={true} placeholder="Password" style={styles.text} onChangeText={(Password) => setPassword(Password)} />
-                    <Text style={SigninFailed ? { color: '#c81b1b' } : { opacity: 0 }}>Your username or password is invalid.</Text>
-                    <View style={styles.border}>
-                        <TouchableOpacity style={styles.SignupTouch} onPress={pressHandlerHomePage}>
-                            <Text style={{ color: "black" }}>Sign In</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={{ alignItems: "center", marginTop: 40 }}>
-                        <Text style={styles.Signup}>Don't have an Account?</Text>
-                        <TouchableOpacity style={{ marginTop: 1 }} onPress={ () => navigation.navigate("SignupScreen") } >
-                            <Text style={{ color: "grey", fontSize: 16 }}>Sign Up</Text>
-                        </TouchableOpacity>
+                <View style={{ flex: 1 }}>
+                    {/* <FontAwesomeIcon icon={ faChartLine } color={'white'} size={80} /> */}
+                    <Image style={styles.MoonLogo} resizeMode='contain' source={ require("../assets/MoonLogo.png") } />
+
+                    <View style={styles.container}>
+                        <Text style={styles.Login}>Log In</Text>
+                        <TextInput placeholder="Email" style={styles.text} onChangeText={(Email) => setEmail(Email)} />
+                        <TextInput secureTextEntry={true} placeholder="Password" style={styles.text} onChangeText={(Password) => setPassword(Password)} />
+                        <Text style={SigninFailed ? { color: '#c81b1b' } : { opacity: 0 }}>Your username or password is invalid.</Text>
+                        <View style={styles.border}>
+                            <TouchableOpacity style={styles.SignupTouch} onPress={pressHandlerHomePage}>
+                                <Text style={{ color: "black" }}>Sign In</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ alignItems: "center", marginTop: 40 }}>
+                            <Text style={styles.Signup}>Don't have an Account?</Text>
+                            <TouchableOpacity style={{ marginTop: 1 }} onPress={ () => navigation.navigate("SignupScreen") } >
+                                <Text style={{ color: "grey", fontSize: 16 }}>Sign Up</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
             </ScrollView>
@@ -61,11 +65,23 @@ export default function LoginScreen({ navigation }) {
         flex: 1,
         backgroundColor: "#2B3B5C"
     },
+    MoonLogo: {
+        width: '60%', 
+        height: '20%',
+        marginTop: 30, 
+        marginLeft: 85,
+    },
     container: {
         flex: 1, 
+        backgroundColor: '#283349',
         alignItems: 'center', 
         justifyContent: 'center', 
-        marginTop: 120
+        marginTop: 10,
+        marginLeft: 30,
+        marginRight: 30,
+        paddingHorizontal: 40,
+        paddingVertical: 60,
+        borderRadius: 20,
     },
     Login: {
         fontWeight: "bold",
@@ -79,14 +95,14 @@ export default function LoginScreen({ navigation }) {
         paddingBottom: 8,
         paddingLeft: 15,
         height: "10%",
-        width: "70%",
+        width: "95%",
         margin: 12,
         backgroundColor: "#FBFBFF",
         borderRadius: 5
     },
     SignupTouch: {
         alignSelf: 'center',
-        width: "70%",
+        width: "80%",
         padding: 10,
         paddingLeft: "20%",
         paddingRight: "20%",
