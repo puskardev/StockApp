@@ -12,8 +12,9 @@ export default function Header({ navigation }) {
 
     return (
         <View style={styles.header}>
+            <Image style={styles.MoonLogo} resizeMode='contain' source={ require("../assets/Moon.png") } />
             <MaterialIcons name='menu' size={35} onPress={openMenu} style={ styles.icon } />
-            <FontAwesomeIcon icon={ faMoon } color={'white'} size={40} style={ styles.headerText } />
+            {/* <FontAwesomeIcon icon={ faMoon } color={'white'} size={40} style={ styles.headerText } /> */}
         </View>
     );
 }
@@ -28,11 +29,12 @@ const styles = StyleSheet.create({
         shadowOpacity: 0,
         borderBottomWidth: 0
     },
-    headerText: {
-        position: 'absolute'
-    },
     icon: {
         right: 160,
         color: 'rgba(255, 255, 255, .8)',
+    },
+    MoonLogo: {
+        height: '140%',
+        position: 'absolute',
     }
 });

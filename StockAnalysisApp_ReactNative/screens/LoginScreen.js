@@ -35,16 +35,15 @@ export default function LoginScreen({ navigation }) {
             <ScrollView>
                 <View style={{ flex: 1 }}>
                     {/* <FontAwesomeIcon icon={ faChartLine } color={'white'} size={80} /> */}
-                    <Image style={styles.MoonLogo} resizeMode='contain' source={ require("../assets/MoonLogo.png") } />
-
+                    
                     <View style={styles.container}>
-                        <Text style={styles.Login}>Log In</Text>
+                        <Image style={styles.MoonLogo} resizeMode='contain' source={ require("../assets/MoonLogo.png") } />
                         <TextInput placeholder="Email" style={styles.text} onChangeText={(Email) => setEmail(Email)} />
                         <TextInput secureTextEntry={true} placeholder="Password" style={styles.text} onChangeText={(Password) => setPassword(Password)} />
                         <Text style={SigninFailed ? { color: '#c81b1b' } : { opacity: 0 }}>Your username or password is invalid.</Text>
                         <View style={styles.border}>
                             <TouchableOpacity style={styles.SignupTouch} onPress={pressHandlerHomePage}>
-                                <Text style={{ color: "black" }}>Sign In</Text>
+                                <Text style={{ color: "black" }}>Log In</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={{ alignItems: "center", marginTop: 40 }}>
@@ -65,23 +64,18 @@ export default function LoginScreen({ navigation }) {
         flex: 1,
         backgroundColor: "#2B3B5C"
     },
-    MoonLogo: {
-        width: '60%', 
-        height: '20%',
-        marginTop: 30, 
-        marginLeft: 85,
-    },
     container: {
         flex: 1, 
-        backgroundColor: '#283349',
         alignItems: 'center', 
         justifyContent: 'center', 
-        marginTop: 10,
+        marginTop: 200,
         marginLeft: 30,
         marginRight: 30,
-        paddingHorizontal: 40,
-        paddingVertical: 60,
-        borderRadius: 20,
+    },
+    MoonLogo: {
+        width: '100%', 
+        height: '27%',
+        marginBottom: 20,
     },
     Login: {
         fontWeight: "bold",
@@ -94,8 +88,8 @@ export default function LoginScreen({ navigation }) {
         paddingTop: 8,
         paddingBottom: 8,
         paddingLeft: 15,
-        height: "10%",
-        width: "95%",
+        height: "12%",
+        width: "90%",
         margin: 12,
         backgroundColor: "#FBFBFF",
         borderRadius: 5

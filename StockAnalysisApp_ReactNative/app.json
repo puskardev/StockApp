@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "StockAnalysisApp",
-    "slug": "stockanalysisapp",
+    "name": "Moon",
+    "slug": "moon",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -28,6 +28,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": ""
+    "description": "Moon (Stock Analysis App)",
+    "githubUrl": "https://github.com/puskardev/StockApp"
   }
 }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { DrawerItems } from 'react-navigation-drawer';
-import { Avatar } from "react-native-elements";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import fire from "../src/firebase/config";
@@ -24,21 +23,8 @@ const CustomDrawerContentComponent = props => {
         return (
             <View style={{ flex: 1 }}>
                 <ScrollView>
-                    <SafeAreaView
-                        style={styles.container}
-                        //forceInset={{ top: 'always', horizontal: 'never' }}
-                    >
-                        <Image style={{ width: '80%', height: '40%', marginLeft: 25, marginTop: 20 }} resizeMode='contain' source={ require("../assets/MoonLogo.png") } />
-                        {/*
-                        <View style={[ styles.containHeader, { backgroundColor: '#2f3b52' } ]}>
-                            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <Avatar size='large' rounded icon={{ name: 'user-circle-o', type: 'font-awesome', size: 80 }} />
-                                    <Text style={{ color: '#f9f9f9', marginTop: '3%' }}>Hi, [name]</Text>
-                                    <Text style={{ color: '#f9f9f9' }}>[email]</Text>
-                            </View>
-                        </View>
-                        */}
-                        {/* <DrawerItems {...this.props} /> */}
+                    <SafeAreaView style={styles.container} >
+                        <Image style={styles.MoonLogo} resizeMode='contain' source={ require("../assets/MoonLogo.png") } />
                         <DrawerItems {...props} />
                         <TouchableOpacity onPress={() => props.navigation.navigate('BrowseScreen')} style={{ flexDirection: 'row', alignItems: 'flex-end', marginLeft: 15, marginTop: 5 }}>
                             <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold', marginBottom: 20, marginTop: 5 }}>Browse</Text>
@@ -59,8 +45,11 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: '12%'
     },
-    containHeader: {
-        marginTop: '20%'
+    MoonLogo: {
+        width: '75%', 
+        height: '40%', 
+        marginLeft: 35, 
+        marginTop: 20
     }
 })
 

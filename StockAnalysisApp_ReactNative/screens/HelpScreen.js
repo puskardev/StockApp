@@ -17,10 +17,10 @@ const HelpScreen = props => {
                     <View style={styles.ModalContainer}>
                         <View style={styles.ModalBackground}>
                             <Text style={{ marginBottom: 15, color: 'white', fontWeight: 'bold', fontSize: 25, alignSelf: 'center' }}>Risk Disclosures</Text>
-                            <Text style={{ marginBottom: 15, color: 'white', fontSize: 18 }}>
+                            <Text style={{ marginBottom: 15, color: 'white', fontSize: 17 }}>
                                 All investments involve risks, including the loss of principal. 
-                                The past performance of a security, cryptocurrency, or financial product does not guarantee future results or returns. 
-                                Users should consider their investment objectives and risks carefully before investing in securities or buying/selling cryptocurrencies.
+                                The past performance of a security or financial product does not guarantee future results or returns. 
+                                Users should consider their investment objectives and risks carefully before investing in securities.
                                 The price of a given security may increase or decrease based on market conditions and users may lose money, including their original investment. 
                                 Moon is meant for informational purposes only and is not intended to serve as a recommendation to a user to buy, hold or sell any security or any other asset.
                             </Text>

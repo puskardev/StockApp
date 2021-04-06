@@ -77,9 +77,6 @@ export default function HomePage({ navigation }) {
                             </View>
                         )}
                     />
-                    <TouchableOpacity onPress={pressHandlerBrowseScreen}>
-                        <Text style={styles.AddStockText}>+ Add Stock To List</Text>
-                    </TouchableOpacity>
                 </View>
 
                 {/*
@@ -101,7 +98,8 @@ const styles = StyleSheet.create({
         padding: 15,
       },
       ListContainer: {
-        marginTop: 20,
+        marginTop: 5,
+        marginBottom: 20,
         marginLeft: 5,
       },
       ListHeader: {
