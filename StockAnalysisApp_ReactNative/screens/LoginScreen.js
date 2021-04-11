@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, ScrollView, Image } from "react-native";
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faChartLine } from '@fortawesome/free-solid-svg-icons';
 import fire from "../src/firebase/config";
 
 export default function LoginScreen({ navigation }) {
@@ -32,50 +30,68 @@ export default function LoginScreen({ navigation }) {
 
     return (
         <ImageBackground source={require('../assets/AppBackground.png')} style={styles.backgroundContainer}>
-            <ScrollView>
-                <View style={{ flex: 1 }}>
-                    {/* <FontAwesomeIcon icon={ faChartLine } color={'white'} size={80} /> */}
-                    
-                    <View style={styles.container}>
-                        <Image style={styles.MoonLogo} resizeMode='contain' source={ require("../assets/MoonLogo.png") } />
-                        <TextInput placeholder="Email" style={styles.text} onChangeText={(Email) => setEmail(Email)} />
-                        <TextInput secureTextEntry={true} placeholder="Password" style={styles.text} onChangeText={(Password) => setPassword(Password)} />
-                        <Text style={SigninFailed ? { color: '#c81b1b' } : { opacity: 0 }}>Your username or password is invalid.</Text>
-                        <View style={styles.border}>
-                            <TouchableOpacity style={styles.SignupTouch} onPress={pressHandlerHomePage}>
-                                <Text style={{ color: "black" }}>Log In</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{ alignItems: "center", marginTop: 40 }}>
-                            <Text style={styles.Signup}>Don't have an Account?</Text>
-                            <TouchableOpacity style={{ marginTop: 1 }} onPress={ () => navigation.navigate("SignupScreen") } >
-                                <Text style={{ color: "grey", fontSize: 16 }}>Sign Up</Text>
-                            </TouchableOpacity>
-                        </View>
+            <ScrollView>             
+                <View style={styles.container}>
+                    <Image style={styles.MoonLogo} resizeMode='contain' source={ require("../assets/MoonLogo.png") } />
+                    <TextInput placeholder="Email" style={styles.text} onChangeText={(Email) => setEmail(Email)} />
+                    <TextInput secureTextEntry={true} placeholder="Password" style={styles.text} onChangeText={(Password) => setPassword(Password)} />
+                    <Text style={SigninFailed ? { color: '#c81b1b' } : { opacity: 0 }}>Your username or password is invalid.</Text>
+                    <View style={styles.border}>
+                        <TouchableOpacity style={styles.SignupTouch} onPress={pressHandlerHomePage}>
+                            <Text style={{ color: "black" }}>Log In</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ alignItems: "center", marginTop: 22 }}>
+                        <Text style={styles.Signup}>Don't have an Account?</Text>
+                        <TouchableOpacity style={{ marginTop: 1 }} onPress={ () => navigation.navigate("SignupScreen") } >
+                            <Text style={{ color: "grey", fontSize: 16 }}>Sign Up</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </ScrollView>
         </ImageBackground>
+
+        /* 
+        <ImageBackground source={require('../assets/AppBackground.png')} style={styles.backgroundContainer}>
+            <ScrollView>             
+                <View style={styles.container}>
+                    <Image style={styles.MoonLogo} resizeMode='contain' source={ require("../assets/MoonLogo.png") } />
+                    <TextInput placeholder="Email" style={styles.text} onChangeText={(Email) => setEmail(Email)} />
+                    <TextInput secureTextEntry={true} placeholder="Password" style={styles.text} onChangeText={(Password) => setPassword(Password)} />
+                    <Text style={SigninFailed ? { color: '#c81b1b' } : { opacity: 0 }}>Your username or password is invalid.</Text>
+                    <View style={styles.border}>
+                        <TouchableOpacity style={styles.SignupTouch} onPress={pressHandlerHomePage}>
+                            <Text style={{ color: "black" }}>Log In</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ alignItems: "center", marginTop: 40 }}>
+                        <Text style={styles.Signup}>Don't have an Account?</Text>
+                        <TouchableOpacity style={{ marginTop: 1 }} onPress={ () => navigation.navigate("SignupScreen") } >
+                            <Text style={{ color: "grey", fontSize: 16 }}>Sign Up</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </ScrollView>
+        </ImageBackground>
+        */
     );
   }
 
   const styles = StyleSheet.create({
     backgroundContainer: {
-        flex: 1,
-        backgroundColor: "#2B3B5C"
+        flex: 1
     },
     container: {
         flex: 1, 
         alignItems: 'center', 
         justifyContent: 'center', 
-        marginTop: 200,
+        marginTop: 150,
         marginLeft: 30,
         marginRight: 30,
     },
-    MoonLogo: {
-        width: '100%', 
-        height: '27%',
-        marginBottom: 20,
+    MoonLogo: { 
+        height: 80,
+        marginBottom: 20
     },
     Login: {
         fontWeight: "bold",

@@ -31,7 +31,7 @@ const HelpScreen = props => {
                     </View>
                 </Modal>
 
-                <View style={{ marginLeft: 40, marginRight: 30 }}>
+                <View style={{ marginLeft: 40, marginRight: 30, marginBottom: 40 }}>
                     <Text style={styles.header}>What is Moon?</Text>
                     <Text style={styles.text}>Moon is an app that assists users in analyzing their stocks.</Text>
 

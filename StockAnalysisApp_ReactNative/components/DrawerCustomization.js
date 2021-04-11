@@ -22,19 +22,17 @@ const CustomDrawerContentComponent = props => {
     //render() {
         return (
             <View style={{ flex: 1 }}>
-                <ScrollView>
-                    <SafeAreaView style={styles.container} >
-                        <Image style={styles.MoonLogo} resizeMode='contain' source={ require("../assets/MoonLogo.png") } />
-                        <DrawerItems {...props} />
-                        <TouchableOpacity onPress={() => props.navigation.navigate('BrowseScreen')} style={{ flexDirection: 'row', alignItems: 'flex-end', marginLeft: 15, marginTop: 5 }}>
-                            <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold', marginBottom: 20, marginTop: 5 }}>Browse</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={pressHandlerLogout} style={{ flexDirection: 'row', alignItems: 'flex-end', marginLeft: 15, marginTop: 5 }}>
-                            <FontAwesomeIcon icon={ faSignOutAlt } color={'white'} size={20} />
-                            <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold', marginLeft: 10 }}>Logout</Text>
-                        </TouchableOpacity>
-                    </SafeAreaView>
-                </ScrollView>
+                <SafeAreaView style={styles.container} >
+                    <Image style={styles.MoonLogo} resizeMode='contain' source={ require("../assets/MoonLogo.png") } />
+                    <DrawerItems {...props} />
+                    <TouchableOpacity onPress={() => props.navigation.navigate('BrowseScreen')} style={{ flexDirection: 'row', alignItems: 'flex-end', marginLeft: 15, marginTop: 5 }}>
+                        <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold', marginBottom: 20, marginTop: 5 }}>Browse</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={pressHandlerLogout} style={{ flexDirection: 'row', alignItems: 'flex-end', marginLeft: 15, marginTop: 5 }}>
+                        <FontAwesomeIcon icon={ faSignOutAlt } color={'white'} size={20} />
+                        <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold', marginLeft: 10 }}>Logout</Text>
+                    </TouchableOpacity>
+                </SafeAreaView>
             </View>
         );
     //}
@@ -47,9 +45,9 @@ const styles = StyleSheet.create({
     },
     MoonLogo: {
         width: '75%', 
-        height: '40%', 
+        height: '15%', 
         marginLeft: 35, 
-        marginTop: 20
+        marginTop: 10
     }
 })
 

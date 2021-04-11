@@ -162,7 +162,11 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 40,
     marginBottom: 40,
-    marginTop: 20,
+    ...Platform.select({
+      ios: {
+        marginTop: 20,
+      }
+    }),
   },
   Box2: {
     paddingTop: 8,
