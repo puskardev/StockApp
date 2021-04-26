@@ -5,7 +5,10 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "build": "babel screens/ -d lib/",
+    "prepublish": "npm run build",
+    "flow": "flow"
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.3",
@@ -25,6 +28,7 @@
     "expo": "~40.0.0",
     "expo-status-bar": "~1.0.3",
     "firebase": "^8.3.1",
+    "flow-bin": "^0.148.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
@@ -44,7 +48,10 @@
     "react-navigation-stack": "^2.10.2"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0"
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-flow": "^7.13.13",
+    "flow-bin": "^0.148.0"
   },
   "private": true
 }

@@ -12,7 +12,7 @@ export default function Header({ navigation }) {
 
     return (
         <View style={styles.header}>
-            <Image style={styles.MoonLogo} resizeMode='contain' source={ require("../assets/Moon.png") } />
+            <Image style={styles.MoonLogo} resizeMode='contain' source={ require("../assets/moon.png") } />
             <MaterialIcons name='menu' size={35} onPress={openMenu} style={ styles.icon } />
             {/* <FontAwesomeIcon icon={ faMoon } color={'white'} size={40} style={ styles.headerText } /> */}
         </View>
