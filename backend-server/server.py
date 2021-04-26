@@ -3,7 +3,8 @@ import flair
 import json
 import pandas as pd
 import re
-from flask import Flask
+from flask import Flask, request
+import numpy
 
 # read bearer token for authentication
 #with open('bearer_token.txt') as fp:
@@ -12,16 +13,19 @@ from flask import Flask
 app = Flask(__name__)
 
 
-@app.route("/api", methods=["GET"])
+@app.route("/api", methods=['GET', 'POST'])
 def get():
     BEARER_TOKEN = 'AAAAAAAAAAAAAAAAAAAAAA8NMwEAAAAA6V3vrLt10lRzbe0gM9Yldssb8Mo%3Dl2KDLPZEsTIWdCm4vxFlGOuYuD6ZeZiwupfXPAIuX3Y9CohuTF'
 
-    ticker = 'TSLA'
+    req_data = request.get_json()
+
+    ticker = req_data['ticker']
 
     # parameters for the query.
     params = {'q': ticker,
             'tweet_mode': 'extended',
             'lang': 'en',
+            'count': '100'
         }
 
 
@@ -101,9 +105,22 @@ def get():
 
     #print(df)
 
-    #select_positive = df.loc[df['sentiment'] == 'POSITIVE']
+    select_positive = df.loc[df['sentiment'] == 'POSITIVE']
+    select_negative = df.loc[df['sentiment'] == 'NEGATIVE']
+    #select_negative.sort_values(by=['probability'], ascending= False)
     #pos_result = select_positive.sort_values(by='probability', ascending=False)
     #first = pos_result.iloc[1]
+    pos_tweets = []
+    neg_tweets = []
+
+    i=0
+    while i<=5:
+        temp_pos = select_positive.iloc[i]
+        temp_neg = select_negative.iloc[i]
+        pos_tweets.append(temp_pos["text"])
+        neg_tweets.append(temp_neg["text"])
+        i=i+1
+
 
 
 
@@ -120,7 +137,82 @@ def get():
     resp['pos_count'] = pos_count
     resp['neg_count'] = neg_count
 
+    resp['p1'] = pos_tweets[0]
+    resp['p2'] = pos_tweets[1]
+    resp['p3'] = pos_tweets[2]
+    resp['p4'] = pos_tweets[3]
+    resp['p5'] = pos_tweets[4]
+
+    resp['n1'] = neg_tweets[0]
+    resp['n2'] = neg_tweets[1]
+    resp['n3'] = neg_tweets[2]
+    resp['n4'] = neg_tweets[3]
+    resp['n5'] = neg_tweets[4]
+
+    #function to convert large number into human read-able format. (for example 19999 is 19K)
+    def human_format(num):
+        magnitude = 0
+        while abs(num) >= 1000:
+            magnitude += 1
+            num /= 1000.0
+        # add more suffixes if you need them
+        return '%.2f%s' % (num, ['', 'K', 'M', 'G', 'T', 'P'][magnitude])
+
+
+
+    #Live Stock satistics
+    url = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-statistics"
+
+    querystring = {"symbol":ticker,"region":"US"}
+
+    headers = {
+        'x-rapidapi-key': "d3c8a61ac6msh599765c625f3b24p1e4bf2jsnc7e441ef8701",
+        'x-rapidapi-host': "apidojo-yahoo-finance-v1.p.rapidapi.com"
+        }
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
+
+    response_json = json.loads(response.text)
+
+
+    # Deafult key Staistics for a stock.
+    deafultkeystats = response_json['defaultKeyStatistics']
+
+    resp['shares_Out'] = deafultkeystats['sharesOutstanding']['fmt']
+    resp['share_Short'] = deafultkeystats['sharesShort']['fmt']
+    resp['float_Shares'] = deafultkeystats['floatShares']['fmt']
+    resp['_52WeekChange'] = deafultkeystats['52WeekChange']['fmt']
+
+    #Summary Detail
+    summary_detail = response_json['summaryDetail']
+
+    resp['close'] = summary_detail['previousClose']['fmt']
+    resp['open'] = summary_detail['regularMarketOpen']['fmt']
+    resp['_200dayAvg'] = summary_detail['twoHundredDayAverage']['fmt']
+    resp['_10daysVol'] = summary_detail['averageVolume10days']['fmt']
+    resp['volume'] = summary_detail['volume']['fmt']
+    resp['marketCap'] = summary_detail['marketCap']['fmt']
+    resp['_52WeekLow'] = summary_detail['fiftyTwoWeekLow']['fmt']
+    resp['high'] = summary_detail['dayHigh']['fmt']
+    resp['low'] = summary_detail['regularMarketDayLow']['fmt']
+    resp['_52WeekHigh'] = summary_detail['fiftyTwoWeekHigh']['fmt']
+    resp['exDividendDate'] = summary_detail['exDividendDate']['fmt']
+    resp['dividendYield'] = summary_detail['dividendYield']['fmt']
+
+
+    #Quote Data
+    symbol = response_json['symbol']
+    quote_data = response_json['quoteData'][symbol]
+
+
+    resp['market_changeper'] = quote_data['regularMarketChangePercent']['fmt']
+    resp['market_change'] = quote_data['regularMarketChange']['fmt']
+    resp['market_price'] = quote_data['regularMarketPrice']['fmt']
+
+
     resp = json.dumps(resp)
+
+    print(resp)
 
     return (resp)
 
