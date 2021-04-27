@@ -210,6 +210,40 @@ def get():
     resp['market_price'] = quote_data['regularMarketPrice']['fmt']
 
 
+    #Stock news
+    url = "https://yahoo-finance15.p.rapidapi.com/api/yahoo/ne/news/" + ticker
+
+    headers = {
+    'x-rapidapi-key': "d3c8a61ac6msh599765c625f3b24p1e4bf2jsnc7e441ef8701",
+    'x-rapidapi-host': "yahoo-finance15.p.rapidapi.com"
+    }
+
+    response = requests.request("GET", url, headers=headers)
+
+    #News is an array of news
+    news = json.loads(response.text)
+
+    #News 1
+    resp['news1_title'] = news[0]['title']
+    resp['news1_link'] = news[0]['link']
+
+    #News 2
+    resp['news2_title'] = news[1]['title']
+    resp['news2_link'] = news[1]['link']
+
+    #News 3
+    resp['news3_title'] = news[2]['title']
+    resp['news3_link'] = news[2]['link']
+
+    #News 4
+    resp['news4_title'] = news[3]['title']
+    resp['news4_link'] = news[3]['link']
+
+    #News 5
+    resp['news5_title'] = news[4]['title']
+    resp['news5_link'] = news[4]['link']
+    
+
     resp = json.dumps(resp)
 
     print(resp)
