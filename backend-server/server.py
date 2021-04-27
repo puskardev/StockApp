@@ -221,7 +221,8 @@ def get():
     response = requests.request("GET", url, headers=headers)
 
     #News is an array of news
-    news = json.loads(response.text)
+    response_json = json.loads(response.text)
+    news = response_json['item']
 
     #News 1
     resp['news1_title'] = news[0]['title']
@@ -242,11 +243,9 @@ def get():
     #News 5
     resp['news5_title'] = news[4]['title']
     resp['news5_link'] = news[4]['link']
-    
+
 
     resp = json.dumps(resp)
-
-    print(resp)
 
     return (resp)
 
