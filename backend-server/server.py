@@ -196,8 +196,8 @@ def get():
     resp['high'] = summary_detail['dayHigh']['fmt']
     resp['low'] = summary_detail['regularMarketDayLow']['fmt']
     resp['_52WeekHigh'] = summary_detail['fiftyTwoWeekHigh']['fmt']
-    resp['exDividendDate'] = summary_detail['exDividendDate']['fmt']
-    resp['dividendYield'] = summary_detail['dividendYield']['fmt']
+    #resp['exDividendDate'] = summary_detail['exDividendDate']['fmt']
+    #resp['dividendYield'] = summary_detail['dividendYield']['fmt']
 
 
     #Quote Data
@@ -244,10 +244,82 @@ def get():
     resp['news5_title'] = news[4]['title']
     resp['news5_link'] = news[4]['link']
 
-
     resp = json.dumps(resp)
 
     return (resp)
+
+@app.route("/trending", methods=['GET', 'POST'])
+def get_trending():
+    
+    # Get trending stocks !
+    url = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-trending-tickers"
+
+    querystring = {"region":"US"}
+
+    headers = {
+        'x-rapidapi-key': "d3c8a61ac6msh599765c625f3b24p1e4bf2jsnc7e441ef8701",
+        'x-rapidapi-host': "apidojo-yahoo-finance-v1.p.rapidapi.com"
+        }
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
+
+    response_json = json.loads(response.text)
+
+    result =  response_json['finance']['result']
+
+    list_stocks = result[0]['quotes']
+
+    trend_stocks= {}
+    
+    """
+    trend_stocks['stock1_symbol'] = list_stocks[0]['symbol']
+    trend_stocks['stock1_price'] = list_stocks[0]['regularMarketPrice']
+
+    trend_stocks['stock2_symbol'] = list_stocks[1]['symbol']
+    trend_stocks['stock2_price'] = list_stocks[1]['regularMarketPrice']
+
+    trend_stocks['stock3_symbol'] = list_stocks[2]['symbol']
+    trend_stocks['stock3_price'] = list_stocks[2]['regularMarketPrice']
+
+    trend_stocks['stock4_symbol'] = list_stocks[3]['symbol']
+    trend_stocks['stock4_price'] = list_stocks[3]['regularMarketPrice']
+
+    trend_stocks['stock5_symbol'] = list_stocks[4]['symbol']
+    trend_stocks['stock5_price'] = list_stocks[4]['regularMarketPrice']
+
+    trend_stocks['stock6_symbol'] = list_stocks[5]['symbol']
+    trend_stocks['stock6_price'] = list_stocks[5]['regularMarketPrice']
+
+    trend_stocks['stock7_symbol'] = list_stocks[6]['symbol']
+    trend_stocks['stock7_price'] = list_stocks[6]['regularMarketPrice']
+
+    trend_stocks['stock8_symbol'] = list_stocks[7]['symbol']
+    trend_stocks['stock8_price'] = list_stocks[7]['regularMarketPrice']
+
+    trend_stocks = json.dumps(trend_stocks)
+    """
+
+    stock_list = []
+
+    for stocks in list_stocks:
+        temp={}
+        temp['symbol'] = stocks['symbol']
+        temp['price'] = stocks['regularMarketPrice']
+        if stocks['regularMarketChange'] > 0:
+            status = 'up'
+        else:
+            status = 'down'
+        temp['status'] = status
+
+        stock_list.append(temp)
+
+    trend_stocks['trends'] = stock_list
+
+    trend_stocks = json.dumps(trend_stocks)
+
+
+    return (trend_stocks)
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
