@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, FlatList, ImageBackground } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
 import Header from '../components/header';
+
+var url = "http://10.219.168.64:5000/trending";
 
 export default function HomePage({ navigation }) {
 
@@ -15,13 +17,15 @@ export default function HomePage({ navigation }) {
         { symbol: 'AMZN', name: 'Amazon', value: 3257.71, highValue: 3261.01, lowValue: 3233.31, status: 'up' },
         { symbol: 'FB', name: 'Facebook', value: 269.02, highValue: 271.18, lowValue: 268.34, status: 'down' },
     ]);
-    const [trendingStocks, setTrendingStocks] = useState([
-        { symbol: 'AMC', name: 'AMC Entertainment', value: 10.51, highValue: 11.25, lowValue: 9.72, status: 'up' },
-        { symbol: 'RBLX', name: 'Roblox', value: 71.15, highValue: 72.86, lowValue: 68.56, status: 'up' },
-        { symbol: 'CCL', name: 'Carnival', value: 28.04, highValue: 28.73, lowValue: 27.70, status: 'up' },
-        { symbol: 'TSLA', name: 'Tesla', value: 692.52, highValue: 708.16, lowValue: 684.70, status: 'up' },
-    ]);
+    const [trendingStocks, setTrendingStocks] = useState([]);
 
+    useEffect(() => {
+        fetch(url)
+          .then((response) => response.json())
+          .then((json) => setTrendingStocks(json.trends))
+          .catch((error) => console.error(error))
+          .finally(() => setLoading(false));
+      }, []);
 
     const pressHandlerBrowseScreen = () => {
         navigation.navigate('BrowseScreen');
@@ -70,7 +74,7 @@ export default function HomePage({ navigation }) {
                                             style={styles.image}
                                             source={ item.status==='up' ? require("../assets/GreenTrendline.png") : require("../assets/RedTrendline.png") }
                                         />
-                                        <Text style={ item.status==='up' ? styles.MarketValueGreen : styles.MarketValueRed }>${ item.value }</Text>
+                                        <Text style={ item.status==='up' ? styles.MarketValueGreen : styles.MarketValueRed }>${ item.price }</Text>
                                     </View>
                                 </TouchableOpacity>
                                 <View style={styles.divider}/>
