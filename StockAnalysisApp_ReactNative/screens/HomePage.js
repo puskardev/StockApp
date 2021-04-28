@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, FlatList, ImageBackground } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
 import Header from '../components/header';
 import fire from "../src/firebase/config";
+
+var url = "http://192.168.0.37:5000/trending";
 
 export default function HomePage({ navigation }) {
 
@@ -45,6 +47,15 @@ export default function HomePage({ navigation }) {
         { symbol: 'TSLA', name: 'Tesla', value: 692.52, highValue: 708.16, lowValue: 684.70, status: 'up' },
     ]);
     */
+
+    const [trendingStocks, setTrendingStocks] = useState([]);
+    useEffect(() => {
+        fetch(url)
+          .then((response) => response.json())
+          .then((json) => setTrendingStocks(json.trends))
+          .catch((error) => console.error(error))
+          .finally(() => setLoading(false));
+      }, []);
 
     return (
         <ImageBackground source={require('../assets/AppBackground.png')} style={styles.container}>
@@ -89,7 +100,7 @@ export default function HomePage({ navigation }) {
                                             style={styles.image}
                                             source={ item.status==='up' ? require("../assets/GreenTrendline.png") : require("../assets/RedTrendline.png") }
                                         />
-                                        <Text style={ item.status==='up' ? styles.MarketValueGreen : styles.MarketValueRed }>${ item.value }</Text>
+                                        <Text style={ item.status==='up' ? styles.MarketValueGreen : styles.MarketValueRed }>${ item.price }</Text>
                                     </View>
                                 </TouchableOpacity>
                                 <View style={styles.divider}/>

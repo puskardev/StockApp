@@ -11,6 +11,7 @@ export default function StockScreen({ navigation }) {
     const [isLoading, setLoading] = useState(true);
     const [selectedValue, setSelectedValue] = useState('Monday');
     const [data, setData] = useState([]);
+    const [news, setNews] = useState([]);
 
     useEffect(() => {
         fetch(url, {
