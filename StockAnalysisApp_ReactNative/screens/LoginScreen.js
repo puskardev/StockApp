@@ -9,12 +9,15 @@ export default function LoginScreen({ navigation }) {
 
     const [SigninFailed, setSigninFailed] = useState(false);
 
+    // handles in firebase whenever the user clicks the "Login" button
     const pressHandlerHomePage = () => {
         {
             fire
               .auth()
+              // uses the email and password that the user put into the text fields to sign in with
               .signInWithEmailAndPassword(Email, Password)
               .then(() => {
+                // if the email and password are valid, then the app will display the homepage (user has successfully logged in)
                 navigation.navigate("HomePage");
                 console.log("User signed in");
               })
@@ -23,7 +26,6 @@ export default function LoginScreen({ navigation }) {
                   console.log("Enable anonymous in your firebase console.");
                 }
                 setSigninFailed(true);
-                //console.error(error);
               });
         }
     };
@@ -32,6 +34,7 @@ export default function LoginScreen({ navigation }) {
         <ImageBackground source={require('../assets/AppBackground.png')} style={styles.backgroundContainer}>
             <ScrollView>             
                 <View style={styles.container}>
+                    {/* */}
                     <Image style={styles.MoonLogo} resizeMode='contain' source={ require("../assets/MoonLogo.png") } />
                     <TextInput placeholder="Email" style={styles.text} onChangeText={(Email) => setEmail(Email)} />
                     <TextInput secureTextEntry={true} placeholder="Password" style={styles.text} onChangeText={(Password) => setPassword(Password)} />

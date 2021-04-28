@@ -4,9 +4,32 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
 import Header from '../components/header';
+import fire from "../src/firebase/config";
 
 export default function HomePage({ navigation }) {
 
+    var Email = navigation.getParam("Email");
+
+    var mystocks = 1;
+    var allstocks = 1;
+
+    const starCountRef = fire.database().ref("Users/MyStocks");
+    starCountRef.on("value", (snapshot) => {
+      mystocks = snapshot.val();
+    });
+  
+    var trendingStocks = 1;
+    const starCountRef1 = fire.database().ref("Stocks/TrendingStocks");
+  
+    starCountRef1.on("value", (snapshot) => {
+      trendingStocks = snapshot.val();
+    });
+  
+    const pressHandlerBrowseScreen = () => {
+      navigation.navigate("BrowseScreen", { Email: Email });
+    };    
+
+    /*
     // temporary placeholder stocks:
     const [stocks, setStocks] = useState([
         { symbol: 'TSLA', name: 'Tesla', value: 802.31, highValue: 807.25, lowValue: 785.33, status: 'up' },
@@ -21,11 +44,7 @@ export default function HomePage({ navigation }) {
         { symbol: 'CCL', name: 'Carnival', value: 28.04, highValue: 28.73, lowValue: 27.70, status: 'up' },
         { symbol: 'TSLA', name: 'Tesla', value: 692.52, highValue: 708.16, lowValue: 684.70, status: 'up' },
     ]);
-
-
-    const pressHandlerBrowseScreen = () => {
-        navigation.navigate('BrowseScreen');
-    }
+    */
 
     return (
         <ImageBackground source={require('../assets/AppBackground.png')} style={styles.container}>
@@ -33,7 +52,7 @@ export default function HomePage({ navigation }) {
                 <View style={styles.ListContainer}>
                     <Text style={styles.ListHeader}>My Stocks</Text>
                     <FlatList 
-                        data={stocks}
+                        data={mystocks}
                         renderItem={({ item }) => (
                             <View>
                                 <TouchableOpacity onPress={() => navigation.navigate('StockScreen', item)}>
