@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, FlatList, ImageBackground } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
 import Header from '../components/header';
 import fire from "../src/firebase/config";
@@ -20,33 +18,18 @@ export default function HomePage({ navigation }) {
       mystocks = snapshot.val();
     });
   
+    /*
     var trendingStocks = 1;
     const starCountRef1 = fire.database().ref("Stocks/TrendingStocks");
   
     starCountRef1.on("value", (snapshot) => {
       trendingStocks = snapshot.val();
     });
+    */
   
     const pressHandlerBrowseScreen = () => {
       navigation.navigate("BrowseScreen", { Email: Email });
     };    
-
-    /*
-    // temporary placeholder stocks:
-    const [stocks, setStocks] = useState([
-        { symbol: 'TSLA', name: 'Tesla', value: 802.31, highValue: 807.25, lowValue: 785.33, status: 'up' },
-        { symbol: 'AAPL', name: 'Apple', value: 134.48, highValue: 134.85, lowValue: 133.69, status: 'down' },
-        { symbol: 'MSFT', name: 'Microsoft', value: 244.42, highValue: 244.89, lowValue: 242.74, status: 'up' },
-        { symbol: 'AMZN', name: 'Amazon', value: 3257.71, highValue: 3261.01, lowValue: 3233.31, status: 'up' },
-        { symbol: 'FB', name: 'Facebook', value: 269.02, highValue: 271.18, lowValue: 268.34, status: 'down' },
-    ]);
-    const [trendingStocks, setTrendingStocks] = useState([
-        { symbol: 'AMC', name: 'AMC Entertainment', value: 10.51, highValue: 11.25, lowValue: 9.72, status: 'up' },
-        { symbol: 'RBLX', name: 'Roblox', value: 71.15, highValue: 72.86, lowValue: 68.56, status: 'up' },
-        { symbol: 'CCL', name: 'Carnival', value: 28.04, highValue: 28.73, lowValue: 27.70, status: 'up' },
-        { symbol: 'TSLA', name: 'Tesla', value: 692.52, highValue: 708.16, lowValue: 684.70, status: 'up' },
-    ]);
-    */
 
     const [trendingStocks, setTrendingStocks] = useState([]);
     useEffect(() => {
