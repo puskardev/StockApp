@@ -8,6 +8,7 @@ import BrowseScreen from '../screens/BrowseScreen';
 import StockScreen from '../screens/StockScreen';
 import Header from '../components/header';
 
+// list of all screens in stack navigator
 const screens = {
     LoginScreen: {
         screen: LoginScreen,

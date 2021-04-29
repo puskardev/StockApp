@@ -6,13 +6,18 @@ import fire from "../src/firebase/config";
 
 import { Checkbox } from 'react-native-paper';
 
+// front end code for displaying signup screen
+// Uses firebase to create new users
 export default function SignupScreen({ navigation }) {
+
+  // variables for user information
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [Password2, setPass] = useState("");
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
 
+  // variables for validations
   const [PasswordsDontMatch, setPasswordsDontMatch] = useState(false);
   const [EmailEmpty, setEmailEmpty] = useState(false);
   const [CheckboxNotMarked, setCheckboxNotMarked] = useState(false);
@@ -22,6 +27,7 @@ export default function SignupScreen({ navigation }) {
   const [checked, setChecked] = useState(false);
   const [termsModalVisisble, setTermsModalVisible] = useState(false);
 
+  // handles when user signs up
   Sign = () => {
     setPasswordsDontMatch(false);
     setEmailEmpty(false);
@@ -39,7 +45,6 @@ export default function SignupScreen({ navigation }) {
           if (error.code === "auth/operation-not-allowed") {
             console.log("Enable anonymous in your firebase console.");
           }
-          //console.error(error);
         });
     } else if (Password != Password2) {
       setPasswordsDontMatch(true);

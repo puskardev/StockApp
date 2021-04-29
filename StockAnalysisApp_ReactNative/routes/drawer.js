@@ -4,6 +4,7 @@ import { createAppContainer } from 'react-navigation';
 import AppScreens from './AppScreens';
 import BrowseScreen from '../screens/BrowseScreen';
 import HelpDrawer from './HelpDrawer';
+import Contact from './Contact';
 
 import CustomDrawerContentComponent from '../components/DrawerCustomization';
 
@@ -13,6 +14,9 @@ const RootDrawerNavigator = createDrawerNavigator({
     },
     Help: {
         screen: HelpDrawer,
+    },
+    Contact: {
+        screen: Contact,
     }}, {
         initialRouteName: 'Home',
         contentComponent: CustomDrawerContentComponent,

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, ImageBackground, ScrollView, Modal, Pressable, Linking } from 'react-native';
 
+// front end code for displaying help page screen
 const HelpScreen = props => {
 
     const [termsModalVisisble, setTermsModalVisible] = useState(false);
@@ -37,26 +38,34 @@ const HelpScreen = props => {
 
                     <Text style={styles.header}>How does Moon analyze stocks?</Text>
                     <Text style={styles.text}>Moon utilizes news articles, social media posts, and various APIs to determine a sentiment analysis.</Text>
-
-                    {/* 
-                    <Text style={styles.header}>How do I view a stock of my choosing on Moon?</Text>
-                    <Text style={styles.text}>
-                        Upon first logging into your account, you will see a list. 
-                        (The default name of this list is "My Stocks", but can be changed if a different list name is preferred.) 
-                        At the end of this list will be a button entitled "+ Add Stock to List".
-                        Clicking this button will bring you to a Browse page, where you can browse for any stock you'd like.
-                    </Text>
-                    */}
                     
                     <Text style={styles.header}>What is "My Stocks" on the homepage?</Text>
                     <Text style={styles.text}>
                         Moon allows users to make their own list of stocks to keep track of within the app.
-                        Upon first creating an account and opening the app, the "My Stock" list will be empty.
+                        This provides easy access to the stocks that each user prefers to track.
+                        Users can add or remove stocks as they would like.
+                    </Text>
+
+                    <Text style={styles.header}>How do I add a stock to my list?</Text>
+                    <Text style={styles.text}>
                         Click on the "+ Add Stock to List" button below the list and browse for any stock of your choice.
                         When you find a stock you'd like to add to your list, click the plus (+) button on the right.
-                        When you get back to the homepage, your stock will be added to the list.
                         Add as many stocks as you'd like to your list. 
-                        The next time you log back into the app, your list will be saved just as you left it!
+                        The next time you log back into the app, your list will be saved just as you left it.
+                    </Text>
+
+                    <Text style={styles.header}>How do I delete a stock from my list?</Text>
+                    <Text style={styles.text}>
+                        Click on the "Edit List" button below the list.
+                        This will display trash can icons next to the stocks in your list.
+                        Click on the trash can icon next to the stock that you would like to delete. 
+                        Clicking on the "Exit Editing" button below the list will delete the stock from your list.
+                    </Text>
+
+                    <Text style={styles.header}>What is the "Trending Stocks" list on the homepage and what is it for?</Text>
+                    <Text style={styles.text}>
+                        Moon provides quick and easy access to a list of stocks that are currently trending.
+                        This is especially useful for newer users who are unsure of where to start.
                     </Text>
 
                     <Text style={styles.header}>What are Moon's risk disclosures?</Text>

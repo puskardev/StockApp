@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, FlatList, ImageBackground } from 'react-native';
 
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 import Header from '../components/header';
 import fire from "../src/firebase/config";
 
 var url = "http://192.168.0.37:5000/trending";
 
+// front end code for displaying homepage screen
+// Accesses firebase to display lists and accesses server calls to display trending stocks
 export default function HomePage({ navigation }) {
 
     var Email = navigation.getParam("Email");
@@ -13,24 +18,18 @@ export default function HomePage({ navigation }) {
     var mystocks = 1;
     var allstocks = 1;
 
+    // gets user's "My Stocks" list from firebase
     const starCountRef = fire.database().ref("Users/MyStocks");
     starCountRef.on("value", (snapshot) => {
       mystocks = snapshot.val();
     });
   
-    /*
-    var trendingStocks = 1;
-    const starCountRef1 = fire.database().ref("Stocks/TrendingStocks");
-  
-    starCountRef1.on("value", (snapshot) => {
-      trendingStocks = snapshot.val();
-    });
-    */
-  
+    // press handler to bring user to Browse Screen
     const pressHandlerBrowseScreen = () => {
       navigation.navigate("BrowseScreen", { Email: Email });
     };    
 
+    // gets Trending Stocks from API
     const [trendingStocks, setTrendingStocks] = useState([]);
     useEffect(() => {
         fetch(url)
@@ -38,7 +37,15 @@ export default function HomePage({ navigation }) {
           .then((json) => setTrendingStocks(json.trends))
           .catch((error) => console.error(error))
           .finally(() => setLoading(false));
-      }, []);
+    }, []);
+
+    // handles deleting a stock in the list
+    const deleteStock = () => {
+        const deleteRef = fire.database().ref('Users/MyStocks/6');
+        deleteRef.remove()
+    }
+
+    const [edit, setEdit] = useState(false);
 
     return (
         <ImageBackground source={require('../assets/AppBackground.png')} style={styles.container}>
@@ -57,15 +64,30 @@ export default function HomePage({ navigation }) {
                                             style={styles.image}
                                             source={ item.status==='up' ? require("../assets/GreenTrendline.png") : require("../assets/RedTrendline.png") }
                                         />
-                                        <Text style={ item.status==='up' ? styles.MarketValueGreen : styles.MarketValueRed }>${ item.value }</Text>
+                                        <Text style={ item.status==='up' ? styles.MarketValueGreen : styles.MarketValueRed }>${ item.price }</Text>
+
+                                        {edit ? (
+                                        <TouchableOpacity>
+                                            <FontAwesomeIcon icon={ faTrash } color={'white'} size={25} style={{ marginLeft: 20 }} onPress={deleteStock} />
+                                        </TouchableOpacity>
+                                        ) : null}
                                     </View>
                                 </TouchableOpacity>
+                                
                                 <View style={styles.divider}/>
                             </View>
                         )}
+                        style = {{ marginBottom: 15 }}
                     />
                     <TouchableOpacity onPress={pressHandlerBrowseScreen}>
                         <Text style={styles.AddStockText}>+ Add Stock To List</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => setEdit(!edit)}>
+
+                        {edit ? (
+                            <Text style={styles.EditList}>Exit Editing</Text>
+                        ) : <Text style={styles.EditList}>Edit List</Text>}
+                        
                     </TouchableOpacity>
                 </View>
 
@@ -92,13 +114,6 @@ export default function HomePage({ navigation }) {
                     />
                 </View>
 
-                {/*
-                <TouchableOpacity style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginTop: 20, marginLeft: 5 }}>
-                        <FontAwesomeIcon icon={ faPlusSquare } color={ '#DEDEDE' } size={ 30 } />
-                        <Text style={{ color: '#DEDEDE', fontWeight: 'bold', fontSize: 25, marginLeft: 10 }}>Add New List</Text>
-                </TouchableOpacity>
-                */ }
-
             </ScrollView>
         </ImageBackground>
     );
@@ -111,7 +126,7 @@ const styles = StyleSheet.create({
         padding: 15,
       },
       ListContainer: {
-        marginTop: 5,
+        marginTop: 10,
         marginBottom: 20,
         marginLeft: 5,
       },
@@ -168,12 +183,25 @@ const styles = StyleSheet.create({
       },
       AddStockText: {
         textAlign: 'center',
-        marginTop: 15,
-        marginBottom: 15,
         fontSize: 15,
         fontWeight: 'bold',
         color: '#B2B2B2'
       },
+      EditList: {
+        textAlign: 'center',
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: 'white',
+        marginTop: 8,
+        backgroundColor: '#858585',
+        borderColor: '#858585',
+        borderRadius: 15,
+        borderWidth: 1,
+        marginHorizontal: 125,
+        paddingTop: 5,
+        paddingBottom: 5,
+        overflow: 'hidden',
+      },   
       divider: {
         borderColor: 'rgba(255, 255, 255, .1)', 
         borderWidth: 1

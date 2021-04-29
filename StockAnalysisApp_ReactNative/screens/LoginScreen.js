@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, ScrollView, Image } from "react-native";
 import fire from "../src/firebase/config";
 
+// front end code for displaying login screen
+// Accesses firebase to authenticate and login new users who are trying to log into their account
 export default function LoginScreen({ navigation }) {
 
     const [Email, setEmail] = useState("");

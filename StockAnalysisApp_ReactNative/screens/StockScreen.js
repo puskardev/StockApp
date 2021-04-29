@@ -7,6 +7,8 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 var url = "http://192.168.0.37:5000/api";
 
+// front end code for displaying Stock Information screen
+// Connects to server to access stock information, such as statistics and sentiment analysis
 export default function StockScreen({ navigation }) {
     const [isLoading, setLoading] = useState(true);
     const [selectedValue, setSelectedValue] = useState('Monday');
@@ -51,83 +53,83 @@ export default function StockScreen({ navigation }) {
                 <Text style={styles.AnalysisHeader}>Statistics</Text>
                 <View style={{ flexDirection: 'row', marginTop: 10, marginLeft: 10, marginRight: 10, justifyContent: 'space-between' }}>
                     <View style={{ marginRight: 10 }}>
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>Open: </Text>
                             <Text style={styles.StatsValue}>{ data.open }</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>High: </Text>
                             <Text style={styles.StatsValue}>{ data.high }</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>52 Wk High: </Text>
                             <Text style={styles.StatsValue}>{ data._52WeekHigh }</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>52 Wk Change: </Text>
                             <Text style={styles.StatsValue}>{ data._52WeekChange }</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>Market Cap: </Text>
                             <Text style={styles.StatsValue}>{ data.marketCap }</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>Avg $ (200 days): </Text>
                             <Text style={styles.StatsValue}>{ data._200dayAvg }</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>Prev Close: </Text>
                             <Text style={styles.StatsValue}>{ data.close }</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>Ex Div Date: </Text>
                             <Text style={styles.StatsValue}>{ data.exDividendDate }</Text>
                         </View>
                     </View>
                     <View>
-                         <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                         <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>Volume: </Text>
                             <Text style={styles.StatsValue}>{ data.volume }</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>Low: </Text>
                             <Text style={styles.StatsValue}>{ data.low }</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>52 Wk Low: </Text>
                             <Text style={styles.StatsValue}>{ data._52WeekLow }</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>O/S: </Text>
                             <Text style={styles.StatsValue}>{ data.shares_Out }</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>Div/Yield: </Text>
                             <Text style={styles.StatsValue}>{ data.dividendYield }</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>Avg.Vol(10 days): </Text>
                             <Text style={styles.StatsValue}>{ data._10daysVol }</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>Shares Short: </Text>
                             <Text style={styles.StatsValue}>{ data.share_Short }</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                        <View style={styles.EachStatContainer}>
                             <Text style={styles.StatsTitle}>Float Shares: </Text>
                             <Text style={styles.StatsValue}>{ data.float_shares }</Text>
                         </View>
@@ -226,6 +228,10 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         marginRight: 25,
         justifyContent: 'flex-end'
+    },
+    EachStatContainer: {
+        flexDirection: 'row', 
+        marginBottom: 10
     },
     StatsTitle: {
         color: 'white',
