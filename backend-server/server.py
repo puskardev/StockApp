@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 @app.route("/api", methods=['GET', 'POST'])
 def get():
-    BEARER_TOKEN = 'AAAAAAAAAAAAAAAAAAAAAA8NMwEAAAAA6V3vrLt10lRzbe0gM9Yldssb8Mo%3Dl2KDLPZEsTIWdCm4vxFlGOuYuD6ZeZiwupfXPAIuX3Y9CohuTF'
+    BEARER_TOKEN = TWITTER_API_KEY   #Twitter API Key
 
     req_data = request.get_json()
 
@@ -166,7 +166,7 @@ def get():
     querystring = {"symbol":ticker,"region":"US"}
 
     headers = {
-        'x-rapidapi-key': "d3c8a61ac6msh599765c625f3b24p1e4bf2jsnc7e441ef8701",
+        'x-rapidapi-key': API_KEY, # API KEY goes here
         'x-rapidapi-host': "apidojo-yahoo-finance-v1.p.rapidapi.com"
         }
 
@@ -214,7 +214,7 @@ def get():
     url = "https://yahoo-finance15.p.rapidapi.com/api/yahoo/ne/news/" + ticker
 
     headers = {
-    'x-rapidapi-key': "d3c8a61ac6msh599765c625f3b24p1e4bf2jsnc7e441ef8701",
+    'x-rapidapi-key': API_KEY,  # API KEY goes here
     'x-rapidapi-host': "yahoo-finance15.p.rapidapi.com"
     }
 
@@ -257,7 +257,7 @@ def get_trending():
     querystring = {"region":"US"}
 
     headers = {
-        'x-rapidapi-key': "d3c8a61ac6msh599765c625f3b24p1e4bf2jsnc7e441ef8701",
+        'x-rapidapi-key': API_KEY,  # API Key here 
         'x-rapidapi-host': "apidojo-yahoo-finance-v1.p.rapidapi.com"
         }
 
